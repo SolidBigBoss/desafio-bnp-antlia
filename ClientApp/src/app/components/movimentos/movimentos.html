@@ -1,0 +1,74 @@
+<div class="movimentos-container">
+  <h1>Movimentos Manuais</h1>
+
+  <fieldset class="movimento-form">
+    <legend>Movimento</legend>
+
+    <div class="form-row">
+      <label>Mês:</label>
+      <input type="number" [(ngModel)]="mes" [disabled]="!camposHabilitados" />
+
+      <label>Ano:</label>
+      <input type="number" [(ngModel)]="ano" [disabled]="!camposHabilitados" />
+    </div>
+
+    <div class="form-row">
+      <label>Produto:</label>
+      <select [(ngModel)]="idProduto" (change)="onProdutoChange()" [disabled]="!camposHabilitados">
+        <option value="" disabled selected>Selecione</option>
+        <option *ngFor="let p of produtos" [value]="p.idProduto">{{ p.desProduto }}</option>
+      </select>
+
+      <label>Cosif:</label>
+      <select [(ngModel)]="idCosif" [disabled]="!camposHabilitados || !idProduto">
+        <option value="" disabled selected>Selecione</option>
+        <option *ngFor="let c of cosifs" [value]="c.idCosif">{{ c.idCosif }} – ({{ c.idClassificacao }})</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label>Valor:</label>
+      <input type="number" step="0.01" [(ngModel)]="valor" [disabled]="!camposHabilitados" />
+    </div>
+
+    <div class="form-row">
+      <label>Descrição:</label>
+      <textarea [(ngModel)]="descricao" [disabled]="!camposHabilitados"></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button (click)="limpar()">Limpar</button>
+      <button (click)="novo()">Novo</button>
+      <button (click)="incluir()" [disabled]="!camposHabilitados">Incluir</button>
+    </div>
+  </fieldset>
+
+  <fieldset class="movimento-lista">
+    <legend>Lista</legend>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Mês</th>
+          <th>Ano</th>
+          <th>Código do Produto</th>
+          <th>Descrição do Produto</th>
+          <th>NR Lançamento</th>
+          <th>Descrição</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m of movimentos">
+          <td>{{ m.mes }}</td>
+          <td>{{ m.ano }}</td>
+          <td>{{ m.idProduto }}</td>
+          <td>{{ m.descricaoProduto }}</td>
+          <td>{{ m.numeroLancamento }}</td>
+          <td>{{ m.descricao }}</td>
+          <td>{{ m.valor | currency:'BRL' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </fieldset>
+</div>

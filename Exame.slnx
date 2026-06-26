@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Exame.Api/Exame.Api.csproj" />
+  <Project Path="Exame.Application/Exame.Application.csproj" />
+  <Project Path="Exame.Domain/Exame.Domain.csproj" />
+  <Project Path="Exame.Infrastructure/Exame.Infrastructure.csproj" />
+</Solution>

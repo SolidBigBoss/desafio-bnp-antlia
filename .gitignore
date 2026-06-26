@@ -1,0 +1,14 @@
+# .NET
+bin/
+obj/
+*.user
+.vs/
+
+# Angular
+ClientApp/node_modules/
+ClientApp/.angular/
+ClientApp/dist/
+
+# Geral
+*.log
+.DS_Store
